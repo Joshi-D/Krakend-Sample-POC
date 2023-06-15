@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "proxy_port": 8080,
+  "endpoints": [
+    {
+      "endpoint": "/users",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/users",
+          "encoding": "json",
+          "timeout": "3s",
+          "is_collection": true,
+          "host": ["http://localhost:5003"]
+        }
+      ],
+      "extra_config": {
+        "github.com/devopsfaith/krakend-transformer": {
+          "transform_response": {
+            "filter": "$.data.users",
+            "mapping": {
+              "id": "$.id",
+              "name": "$.name",
+              "email": "$.email"
+            },
+        "telemetry/logging": {
+          "level": "INFO",
+          "prefix": "[KRAKEND]",
+          "syslog": false,
+          "stdout": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/api",
+      "backend": [
+        {
+          "url_pattern": "/users",
+          "host": "http://user-service:5004",
+          "extra_config": {
+            "headers_to_pass": ["Authorization"]
+          }
+        }
+      ]
+    }
+  ]
+}

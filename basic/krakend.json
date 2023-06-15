@@ -1,0 +1,30 @@
+{
+    "version": 3,
+    "port": 8080,
+    "timeout": "3000ms",
+    "endpoints": [
+      {
+        "endpoint": "/users",
+        "backend": [
+          {
+            "url_pattern": "/users",
+            "encoding": "json",
+            "is_collection": true,
+            "host": ["http://localhost:5001"]
+          }
+        ]
+      },
+      {
+        "endpoint": "/orders",
+        "backend": [
+          {
+            "url_pattern": "/orders",
+            "encoding": "json",
+            "is_collection": true,
+            "host": ["http://localhost:5002"]
+          }
+        ]
+      }
+    ]
+  }
+  
